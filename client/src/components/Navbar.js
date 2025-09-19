@@ -20,14 +20,14 @@ const Navbar = ({ onLogout, onSearch }) => {
   };
 
   return (
-    <nav className="bg-white shadow-md border-b-2 border-gray-200">
-      <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-wrap items-start justify-between gap-4">
-        <div className="text-4xl vs:text-3xl font-extrabold text-indigo-600 tracking-wide">
+    <nav className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 shadow-lg sticky top-0 z-50">
+      <div className="max-w-screen-xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+        {/* Logo */}
+        <div className="text-3xl font-extrabold text-white tracking-wide drop-shadow-lg">
           RentEase
         </div>
 
-
-        {/* Container for filters + buttons */}
+        {/* Filters + Buttons */}
         <div className="flex flex-wrap items-center gap-2 ml-auto vs:flex-col vs:items-start vs:w-full">
           <input
             type="text"
@@ -35,7 +35,7 @@ const Navbar = ({ onLogout, onSearch }) => {
             placeholder="City"
             value={filters.city}
             onChange={handleChange}
-            className="w-28 border rounded px-2 py-1 vs:w-full"
+            className="w-28 border rounded px-2 py-1 vs:w-full focus:ring-2 focus:ring-white outline-none"
           />
           <input
             type="number"
@@ -43,7 +43,7 @@ const Navbar = ({ onLogout, onSearch }) => {
             placeholder="Min Rent"
             value={filters.rentMin}
             onChange={handleChange}
-            className="w-28 border rounded px-2 py-1 vs:w-full"
+            className="w-28 border rounded px-2 py-1 vs:w-full focus:ring-2 focus:ring-white outline-none"
           />
           <input
             type="number"
@@ -51,13 +51,13 @@ const Navbar = ({ onLogout, onSearch }) => {
             placeholder="Max Rent"
             value={filters.rentMax}
             onChange={handleChange}
-            className="w-28 border rounded px-2 py-1 vs:w-full"
+            className="w-28 border rounded px-2 py-1 vs:w-full focus:ring-2 focus:ring-white outline-none"
           />
           <select
             name="type"
             value={filters.type}
             onChange={handleChange}
-            className="w-26 border rounded px-2 py-1 vs:w-full"
+            className="w-26 border rounded px-2 py-1 vs:w-full focus:ring-2 focus:ring-white outline-none"
           >
             <option value="">All Types</option>
             <option value="1BHK">1BHK</option>
@@ -67,14 +67,14 @@ const Navbar = ({ onLogout, onSearch }) => {
 
           <button
             onClick={handleSearch}
-            className="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 vs:w-full"
+            className="bg-white text-indigo-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 shadow-md transition vs:w-full"
           >
             Search
           </button>
 
           <button
             onClick={onLogout}
-            className="text-indigo-600 border border-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-600 hover:text-white transition vs:w-full"
+            className="text-white border border-white px-4 py-2 rounded-lg hover:bg-white hover:text-indigo-600 transition vs:w-full"
           >
             Logout
           </button>
