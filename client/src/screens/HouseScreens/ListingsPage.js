@@ -45,7 +45,7 @@ const ListingPage = () => {
       const res = await axios.get(`${API_BASE}/api/properties`);
       setProducts(res.data);
     } catch (err) {
-      setMessage('Failed to fetch properties');
+      setMessage('Failed to fetch properties ');
     }
   };
 
