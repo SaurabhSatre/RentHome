@@ -1,49 +1,8 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  Container,
-  Grid,
-  Paper,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
-} from "@mui/material";
-import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "../helper/helper.functions.js";
 import ToastMessage from "../components/ToastMessage.js";
 import { API_BASE } from "../constants.js";
-
-const BackgroundContainer = styled(Box)({
-  backgroundImage: 'url("https://source.unsplash.com/random/1600x900?workspace")',
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  height: "100vh",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-});
-
-const SignUpPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
-  width: "100%",
-  maxWidth: 500,
-  borderRadius: 16,
-  boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
-  backgroundColor: "rgba(255, 255, 255, 0.85)",
-  backdropFilter: "blur(10px)",
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  padding: theme.spacing(1.5),
-  fontSize: "1rem",
-  borderRadius: theme.shape.borderRadius * 2,
-  textTransform: "none",
-}));
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -120,87 +79,80 @@ const SignUpPage = () => {
   };
 
   return (
-    <BackgroundContainer>
-      <SignUpPaper>
-        <Typography
-          variant="h4"
-          component="h1"
-          gutterBottom
-          align="center"
-          sx={{ fontWeight: 600, color: "primary.main" }}
-        >
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center px-4 py-8">
+      <div className="bg-white p-8 rounded-2xl w-full max-w-lg shadow-xl">
+        <h1 className="text-3xl font-bold text-gray-800 tracking-tight text-center mb-2">
           Create an Account
-        </Typography>
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{ mb: 2, color: "text.secondary" }}
-        >
+        </h1>
+        <p className="text-center text-gray-600 mb-6">
           Sign up to get started
-        </Typography>
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          noValidate
-          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-        >
-          <TextField
-            label="Full Name"
-            name="name"
-            type="text"
-            variant="outlined"
-            fullWidth
-            required
-          />
-          <TextField
-            label="Email Address"
-            name="email"
-            type="email"
-            variant="outlined"
-            fullWidth
-            required
-          />
-          <TextField
-            label="Password"
-            name="password"
-            type="password"
-            variant="outlined"
-            fullWidth
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <TextField
-            label="Confirm Password"
-            name="confirmPassword"
-            type="password"
-            variant="outlined"
-            fullWidth
-            required
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+        </p>
+        
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <input
+              name="name"
+              type="text"
+              placeholder="Full Name"
+              required
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+          </div>
           
-          <StyledButton type="submit" variant="contained" color="primary" fullWidth>
+          <div>
+            <input
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              required
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+          </div>
+          
+          <div>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+          </div>
+          
+          <div>
+            <input
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              required
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+          </div>
+          
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-[1.02] font-medium"
+          >
             Sign Up
-          </StyledButton>
-        </Box>
-        <Grid container justifyContent="center" sx={{ mt: 2 }}>
-          <Typography variant="body2">
+          </button>
+        </form>
+        
+        <div className="mt-6 text-center">
+          <p className="text-gray-600 text-sm">
             Already have an account?{" "}
             <span
-              style={{
-                color: "#3f51b5",
-                cursor: "pointer",
-                textDecoration: "underline",
-              }}
+              className="text-blue-600 cursor-pointer font-medium hover:text-blue-700 transition-colors underline"
               onClick={() => navigate("/login")}
             >
               Login
             </span>
-          </Typography>
-        </Grid>
-      </SignUpPaper>
+          </p>
+        </div>
+      </div>
 
       <ToastMessage
         message={toastMessage}
@@ -208,7 +160,7 @@ const SignUpPage = () => {
         onClose={() => setShowToast(false)}
         severity={severity}
       />
-    </BackgroundContainer>
+    </div>
   );
 };
 
